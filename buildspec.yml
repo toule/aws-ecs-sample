@@ -1,9 +1,5 @@
 version: 0.2
 
-env:
-  parameter-store:
-    CONTAINER_NAME: MyProject_Con
-    AWS_DEFAULT_REGION: ap-northeast-2
 phases:
   install:
     runtime-versions:

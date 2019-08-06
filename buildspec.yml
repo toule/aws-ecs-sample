@@ -23,9 +23,9 @@ phases:
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG 
       - echo Writing image definitions file...
 ##imagedfinition.json##      - printf '[{"name":"%s","imageUri":"%s"}]' "$CONTAINER_NAME" "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG" | tee imagedefinitions.json
-      - printf '{"imageUri":"%s"}' "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG" | tee imagedefinitions.json
+      - printf '{"imageUri":"%s"}' "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG" | tee imageDetail.json
 artifacts:
   files:
-    - nginx_test_definition.json
-    - imagedefinitions.json
+    - taskdef.json
+    - imageDetail.json
     - appspec.yml

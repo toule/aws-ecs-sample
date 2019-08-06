@@ -5,5 +5,5 @@ Resources:
       Properties:
         TaskDefinition: "arn:aws:ecs:ap-northeast-2:264594923212:task-definition/webtask:33"
         LoadBalancerInfo:
-          ContainerName: "nginx"
+          ContainerName: "264594923212.dkr.ecr.ap-northeast-2.amazonaws.com/mynginx:latest"
           ContainerPort: 80

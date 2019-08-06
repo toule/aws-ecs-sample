@@ -4,7 +4,7 @@
         "containerDefinitions": [
             {
                 "name": "nginx",
-                "image": "IMAGE1_NAME",
+                "image": "<IMAGE1_NAME>",
                 "cpu": 0,
                 "memoryReservation": 300,
                 "portMappings": [

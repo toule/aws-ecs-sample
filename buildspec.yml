@@ -24,4 +24,6 @@ phases:
       - echo Writing image definitions file...
       - printf '[{"name":"%s","imageUri":"%s"}]' "$CONTAINER_NAME" "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG" | tee imagedefinitions.json
 artifacts:
-  files: imagedefinitions.json
+  files: 
+    - imagedefinitions.json
+    - buildspec.yml

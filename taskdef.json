@@ -1,16 +1,44 @@
 {
-  "containerDefinitions": [
-  {
-    "name": "nginx",
-    "image": "264594923212.dkr.ecr.ap-northeast-2.amazonaws.com/mynginx:latest",
-    "memoryReservation": 300,
-    "essential": true,
-      "portMappings": [
-      {
-        "containerPort": 80,
-        "hostPort": 0,
-		"protocol":"tcp"
-      }]
-  }],
-  "networkMode":"bridge"
+    "taskDefinition": {
+        "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:264594923212:task-definition/webtask:33",
+        "containerDefinitions": [
+            {
+                "name": "nginx",
+                "image": "264594923212.dkr.ecr.ap-northeast-2.amazonaws.com/mynginx:latest",
+                "cpu": 0,
+                "memoryReservation": 300,
+                "portMappings": [
+                    {
+                        "containerPort": 80,
+                        "hostPort": 0,
+                        "protocol": "tcp"
+                    }
+                ],
+                "essential": true,
+                "environment": [],
+                "mountPoints": [],
+                "volumesFrom": []
+            }
+        ],
+        "family": "webtask",
+        "networkMode": "bridge",
+        "revision": 33,
+        "volumes": [],
+        "status": "ACTIVE",
+        "requiresAttributes": [
+            {
+                "name": "com.amazonaws.ecs.capability.ecr-auth"
+            },
+            {
+                "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+            }
+        ],
+        "placementConstraints": [],
+        "compatibilities": [
+            "EC2"
+        ],
+        "requiresCompatibilities": [
+            "EC2"
+        ]
+    }
 }

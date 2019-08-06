@@ -11,5 +11,6 @@
         "hostPort": 0,
 		"protocol":"tcp"
       }]
-  }]
+  }],
+  "networkMode":"bridge"
 }

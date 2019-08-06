@@ -28,5 +28,12 @@ phases:
 artifacts:
   files:
     - taskdef.json
-    - imagedetail.json
     - appspec.yaml
+  secondary-artifacts:
+    DefinitionArtifact:
+      files:
+        - appspec.yaml
+        - taskdef.json
+    ImageArtifact:
+      files:
+        - imagedetail.json

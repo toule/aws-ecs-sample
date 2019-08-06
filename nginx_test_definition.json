@@ -1,0 +1,14 @@
+[
+  {
+    "name": "nginx",
+    "image": "264594923212.dkr.ecr.ap-northeast-2.amazonaws.com/mynginx:latest",
+    "memoryReservation": 300,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 80,
+        "hostPort": 0
+      }
+    ]
+  }
+]

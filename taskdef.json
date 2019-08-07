@@ -1,0 +1,24 @@
+{
+    "executionRoleArn": "arn:aws:iam::264594923212:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "name": "nginx",
+            "image": "264594923212.dkr.ecr.ap-northeast-2.amazonaws.com/mynginx:4",
+			"cpu": 0,
+            "memoryReservation": 300,
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "containerPort": 80
+                }
+            ]
+        }
+    ],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "networkMode": "bridge",
+    "family": "webtask"
+}

@@ -5,7 +5,7 @@
             "TargetService": {
                 "Type": "AWS::ECS::Service",
                 "Properties": {
-                    "TaskDefinition": "arn:aws:ecs:ap-northeast-2:264594923212:task-definition/webtask:41",
+                    "TaskDefinition": "arn:aws:ecs:ap-northeast-2:264594923212:task-definition/webtask:42",
                     "LoadBalancerInfo": {
                         "ContainerName": "nginx",
                         "ContainerPort": 80

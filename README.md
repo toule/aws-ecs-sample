@@ -241,7 +241,7 @@ docker push $Account.dkr.ecr.ap-northeast-2.amazonaws.com/my-tomcat:v1
 - Task Definition Name: web-task
 - Network Mode: Bridge
 
-![alb-3](./images/web-task-1.png)
+![nginx-task](./images/web-task-1.png)
 
 ### Container Definition
 
@@ -252,14 +252,14 @@ docker push $Account.dkr.ecr.ap-northeast-2.amazonaws.com/my-tomcat:v1
 - Memory Limits (Soft limit): 300
 - Port mappings: (Host port: 0), (Container port: 80), Protocol(tcp)
 
-![alb-3](./images/container-conf.png)
+![add-container](./images/container-conf.png)
 
 #### Tomcat
 
 - Task Definition Name: was-task
 - Network Mode: Bridge
 
-![alb-3](./images/was-task-1.png)
+![tomcat-task](./images/was-task-1.png)
 
 ### Container Definition
 
@@ -270,7 +270,7 @@ docker push $Account.dkr.ecr.ap-northeast-2.amazonaws.com/my-tomcat:v1
 - Memory Limits (Soft limit): 300
 - Port mappings: (Host port: 0), (Container port: 8080), Protocol(tcp)
 
-![alb-3](./images/tomcat-container.png)
+![add-container](./images/tomcat-container.png)
 
 
 
@@ -307,7 +307,7 @@ docker push $Account.dkr.ecr.ap-northeast-2.amazonaws.com/my-tomcat:v1
 - Service type: REPLICA
 - Number of tasks: 3
 
-![ECS-Cluster-3](./images/nginx-svc-conf-1.png)
+![nginx-SVC-1](./images/nginx-svc-conf-1.png)
 
 - 참고사항
   - Minimum healthy percent: 배포시 Running 상태를 유지해야하는 서비스 내 작업수에 대한 하한을 원하는 작업수에 대한 백분율로 지정 -> 50%인경우 원하는 태스크가 4개일 때 새로운 태스크가 2개가 올라올때 2개를 내려서 용량을 확보할 수 있음(가까운 정수로 올림)
@@ -316,7 +316,7 @@ docker push $Account.dkr.ecr.ap-northeast-2.amazonaws.com/my-tomcat:v1
 - Rolling update: Enable
 - Placement Templates: AZ Balanced Spread
 
-![ECS-Cluster-3](./images/nginx-svc-conf-2.png)
+![nginx-SVC-2](./images/nginx-svc-conf-2.png)
 
 
 
@@ -324,7 +324,7 @@ docker push $Account.dkr.ecr.ap-northeast-2.amazonaws.com/my-tomcat:v1
 - Service IAM role: ecsServiceRole (사전에 만든 IAM Role)
 - Load balancer name: ECS-Nginx-ALB (사전에 만든 ALB)
 
-![ECS-Cluster-3](./images/nginx-svc-conf-3.png)
+![nginx-SVC-3](./images/nginx-svc-conf-3.png)
 
 
 
@@ -333,7 +333,7 @@ docker push $Account.dkr.ecr.ap-northeast-2.amazonaws.com/my-tomcat:v1
 - Service discovery: Disabled
 - AutoScaling: Disabled
 
-![ECS-Cluster-3](./images/nginx-svc-conf-4.png)
+![nginx-SVC-4](./images/nginx-svc-conf-4.png)
 
 ### Tomcat Service
 
@@ -358,11 +358,11 @@ docker push $Account.dkr.ecr.ap-northeast-2.amazonaws.com/my-tomcat:v1
 
 ### Target Group 확인 (ex: Nginx)
 
-![ECS-Cluster-3](./images/result-tg.png)
+![result-tg](./images/result-tg.png)
 
 ### ALB DNS 확인
 
-![ECS-Cluster-3](./images/result.png)
+![result-browser](./images/result.png)
 
 
 
@@ -375,7 +375,7 @@ docker push $Account.dkr.ecr.ap-northeast-2.amazonaws.com/my-tomcat:v1
 
 ### Cluster 삭제
 
-![ECS-Cluster-3](./images/delete-cluster.png)
+![delete-cluster](./images/delete-cluster.png)
 
 ### Load Balancer(Application Load Balancer) 삭제
 
@@ -393,7 +393,7 @@ docker push $Account.dkr.ecr.ap-northeast-2.amazonaws.com/my-tomcat:v1
 
 - my-nginx -> Delete
 
-![ECS-Cluster-3](./images/delete-ecr.png)
+![delete-ecr](./images/delete-ecr.png)
 
 - my-tomcat -> Delete
 

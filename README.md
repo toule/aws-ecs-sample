@@ -248,7 +248,7 @@ docker push $Account.dkr.ecr.ap-northeast-2.amazonaws.com/my-tomcat:v1
 #### Add container
 
 - Container name: nginx-container
-- Image: <my-account-id>.dkr.ecr.ap-northeast-2.amazonaws.com/my-nginx:v1
+- Image: {my-account-id}.dkr.ecr.ap-northeast-2.amazonaws.com/my-nginx:v1
 - Memory Limits (Soft limit): 300
 - Port mappings: (Host port: 0), (Container port: 80), Protocol(tcp)
 
@@ -266,7 +266,7 @@ docker push $Account.dkr.ecr.ap-northeast-2.amazonaws.com/my-tomcat:v1
 #### Add container
 
 - Container name: nginx-container
-- Image: <my-account-id>.dkr.ecr.ap-northeast-2.amazonaws.com/my-nginx:v1
+- Image: {my-account-id}.dkr.ecr.ap-northeast-2.amazonaws.com/my-nginx:v1
 - Memory Limits (Soft limit): 300
 - Port mappings: (Host port: 0), (Container port: 8080), Protocol(tcp)
 

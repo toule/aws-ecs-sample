@@ -297,3 +297,116 @@ docker push $Account.dkr.ecr.ap-northeast-2.amazonaws.com/my-tomcat:v1
 
   ![ECS-Cluster-3](./images/configure-cluster-3.png)
 
+## Service 생성
+
+### Nginx Service
+
+- Lauch type: EC2
+- Task Definition: web-task
+- Service name: nginx-SVC
+- Service type: REPLICA
+- Number of tasks: 3
+
+![ECS-Cluster-3](./images/nginx-svc-conf-1.png)
+
+- 참고사항
+  - Minimum healthy percent: 배포시 Running 상태를 유지해야하는 서비스 내 작업수에 대한 하한을 원하는 작업수에 대한 백분율로 지정 -> 50%인경우 원하는 태스크가 4개일 때 새로운 태스크가 2개가 올라올때 2개를 내려서 용량을 확보할 수 있음(가까운 정수로 올림)
+  - Maximum healthy percent: 배포시 Running 또는 Pending 상태가 허용되는 서비스 내 작업 수에 대해 상한선을 지정 -> 200%인 경우 태스크가 4개이면 기존 작업을 중지하기전에 4개까지 동작시킬 수 있음 (스케쥴링 과정에서 늘어날 수 있는 태스크 수를 지정, 가까운 정수로 내림)
+
+- Rolling update: Enable
+- Placement Templates: AZ Balanced Spread
+
+![ECS-Cluster-3](./images/nginx-svc-conf-2.png)
+
+
+
+- Load balancer type: Application Load Balancer
+- Service IAM role: ecsServiceRole (사전에 만든 IAM Role)
+- Load balancer name: ECS-Nginx-ALB (사전에 만든 ALB)
+
+![ECS-Cluster-3](./images/nginx-svc-conf-3.png)
+
+
+
+- Production listener port: 80:HTTP
+- Target Group: ECS-Nginx-tg (사전에 만든 Target Group)
+- Service discovery: Disabled
+- AutoScaling: Disabled
+
+![ECS-Cluster-3](./images/nginx-svc-conf-4.png)
+
+### Tomcat Service
+
+- Lauch type: EC2
+- Task Definition: was-task
+- Service name: tomcat-SVC
+- Service type: REPLICA
+- Number of tasks: 4
+- Rolling update: Enable
+- Placement Templates: AZ Balanced Spread
+- Load balancer type: Application Load Balancer
+- Service IAM role: ecsServiceRole (사전에 만든 IAM Role)
+- Load balancer name: ECS-Tomcat-ALB (사전에 만든 ALB)
+- Production listener port: 80:HTTP
+- Target Group: ECS-Tomcat-tg (사전에 만든 Target Group)
+- Service discovery: Disabled
+- AutoScaling: Disabled
+
+
+
+## Result
+
+### Target Group 확인 (ex: Nginx)
+
+![ECS-Cluster-3](./images/result-tg.png)
+
+### ALB DNS 확인
+
+![ECS-Cluster-3](./images/result.png)
+
+
+
+## 인프라 삭제
+
+### Service 삭제
+
+- nginx-SVC deleted
+- tomcat-SVC deleted
+
+### Cluster 삭제
+
+![ECS-Cluster-3](./images/delete-cluster.png)
+
+### Load Balancer(Application Load Balancer) 삭제
+
+#### Load Balancer
+
+- ECS-Nginx-ALB -> Actions -> Delete
+- ECS-Tomcat-ALB -> Actions -> Delete
+
+#### Target Group 삭제
+
+- ECS-Nginx-tg -> Actions -> Delete
+- ECS-Tomcat-tg -> Actions -> Delete
+
+### ECR 삭제
+
+- my-nginx -> Delete
+
+![ECS-Cluster-3](./images/delete-ecr.png)
+
+- my-tomcat -> Delete
+
+### NAT Gateway 삭제
+
+- Default-NAT -> Actions -> Delete NAT Gateway
+- Elatic IPs -> Actions -> Release addresses (NAT Gateway를 설치하면서 만들었던 eip release)
+
+### Secret Group 삭제
+
+- LB-SG (Group Name: http-lb-sg) -> Actions -> Delete Security Group
+- ECS-Instance-SG (Group Name: ecs instance sg) -> Actions -> Delete Security Group
+
+### IAM Role 삭제
+
+- ecsInstanceRole -> Delete role

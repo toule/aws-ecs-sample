@@ -66,7 +66,7 @@
 - IP address type: ipv4
 - Listeners: HTTP
 - VPC: Default VPC
-- Available Zones: Public Subnet
+- Available Zones: Public Subnet (A,B,C)
 - Security Goups : http-lb-sg (custom-sg)
 
 ![alb-2](./images/alb-conf.png)
@@ -89,7 +89,7 @@
 - IP address type: ipv4
 - Listeners: HTTP
 - VPC: Default VPC
-- Available Zones: Private Subnet
+- Available Zones: Private Subnet (A,B,C)
 - Security Goups : http-lb-sg (custom-sg)
 
 ###### Target Configure

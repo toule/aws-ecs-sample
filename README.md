@@ -366,6 +366,24 @@ docker push $Account.dkr.ecr.ap-northeast-2.amazonaws.com/my-tomcat:v1
 
 
 
+### 추가: CloudWatch Container Insight
+
+#### Overview
+
+![overview](./images/insight-overview.png)
+
+#### Task Overview
+
+- View application logs
+- View AWS X-Ray traces (사전에 정의 필요)
+- View performance logs
+
+![insight-1](./images/task-logs-overview.png)
+
+![insight-2](./images/task-logs.png)
+
+![insight-2](./images/task-logs-1.png)
+
 ## 인프라 삭제
 
 ### Service 삭제

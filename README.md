@@ -10,6 +10,8 @@
 
 - 환경: macOS Catalina Version 10.15.3
 - 비용이 발생할 수 있음
+- CI/CD -> ECS 배포 : deploy-ecs ***(현재 작업 중)***
+- CI/CD -> CodeDeploy 배포(Blue/Green) : deploy-bg ***(현재 작업 중)***
 
 ## 아키텍처 (Architecture)
 

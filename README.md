@@ -47,7 +47,7 @@
 #### ECS Instance Security Goup
 
 - name: ECS-Instance-SG
-- Inbound: Custom TCP Rule(TCP: 327680-65535, Dynamic Porting), SSH(TCP: 22)
+- Inbound: Custom TCP Rule(TCP: 32768-65535, Dynamic Porting), SSH(TCP: 22)
 
 ![iam2](./images/ECS-SG.png)
 
@@ -267,7 +267,7 @@ docker push $Account.dkr.ecr.ap-northeast-2.amazonaws.com/my-tomcat:v1
 
 #### Add container
 
-- Container name: nginx-container
+- Container name: tomcat-container
 - Image: {my-account-id}.dkr.ecr.ap-northeast-2.amazonaws.com/my-nginx:v1
 - Memory Limits (Soft limit): 300
 - Port mappings: (Host port: 0), (Container port: 8080), Protocol(tcp)

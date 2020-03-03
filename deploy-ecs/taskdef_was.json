@@ -2,7 +2,7 @@
     "executionRoleiArn": "arn:aws:iam::264594923212:role/ecsTaskExecutionRole",
     "containerDefinitions": [
         {
-            "name": "my-tomcat",
+            "name": "tomcat-container",
             "image": "<IMAGE1_NAME>",
 			"cpu": 0,
             "memoryReservation": 300,

@@ -8,18 +8,6 @@
 
 ## 수정 사항
 
-- buildspec.yaml파일의 단일화를 위해 Task의 컨테이너 이름을 image repo name으로 수정 (Service를 지우고 새로 생성)
-  - nginx-container -> my-container
-  - tomcat-container -> my-tomcat
-
-1. web-task
-
-![task-defi1](../images/nginx-defi.png)
-
-2. was-task
-
-![task-defi2](../images/tomcat-defi.png)
-
 - 결과 확인을 위해 task의 수 조절
   - web-task: 3 -> 2
   - was-task: 4 -> 2
@@ -70,6 +58,7 @@
 #### 고려 사항
 
 - nginx와 tomcat이 하나의 파이프라인에서 동작해야 하기 때문에 두개의 build setting이 필요
+- account id에 대해서는 Plaintext보다는 parameter store나 secret manager를 활용하는 것을 권고함
 
 #### Nginx
 
@@ -84,6 +73,7 @@
   - MY_ACCOUNT_ID: <my_account_id> (계정 넘버를 기입)
   - IMAGE_REPO_NAME: my-nginx
   - DOCKERFILE_PATH: my-nginx
+  - CONTAINER_NAME: nginx-container
 
 ![build-env](../images/codebuild_env.png)
 
@@ -102,6 +92,7 @@
   - MY_ACCOUNT_ID: <my_account_id> (계정 넘버를 기입)
   - IMAGE_REPO_NAME: my-tomcat
   - DOCKERFILE_PATH: my-tomcat
+  - CONTAINER_NAME: tomcat-container
 - 나머지는 Default
 
 
@@ -188,11 +179,54 @@
 
 ![build-env](../images/pipeline-6.png)
 
-###### result
+###### confirm
 
 ![build-env](../images/pipeline-7.png)
 
 ## Test
 
-### 준비 상황
+- git과 관련된 flow는 다음 [예제](https://github.com/toule/aws-cicd-sample/tree/master/django)를 참조
+- IAM User를 소유하고 있고 자격증명을 완료한 상황(aws configure)
+- IAM 자격증명이 안되는 경우 codecommit에 대한 credential은 있어야함
 
+### Repository Set
+
+```bash
+git init
+git remote add origin <my-repository-address>
+git remote get-url --all origin
+```
+
+### Git Commit
+
+```bash
+git add .
+git commit -m "inital commit"
+git push origin master
+```
+
+### Result
+
+#### Rolling Update
+
+- ECS Rolling Update (task버전에 업데이트 되었으며 현재 이전버전과 함께 같이 동작 중)
+
+![result1](../images/ecs-result-1.png)
+
+![result2](../images/ecs-result-2.png)
+
+![result3](../images/ecs-result-3.png)
+
+- Load Balancer에서는 이전 버전의 Task를 Draining
+
+![result4](../images/ecs-result-4.png)
+
+![result5](../images/ecs-result-5.png)
+
+#### Pipeline
+
+![result-pipeline](../images/result-pipeline.png)
+
+#### Result
+
+![result-pipeline](../images/domain-result.png)

@@ -4,6 +4,7 @@
 
 - 앞서 진행한 ECS 클러스터(Sample-cluster)를 기반으로 진행
 - 현 문서에서 role 혹은 설정이 없는 것은 이전 문서에 있는 값을 그대로 가져옴
+- CI/CD 파이프라인 구성은 다음 [예제](https://github.com/toule/aws-cicd-sample)를 참조
 
 ## 수정 사항
 
@@ -55,8 +56,6 @@
 
 
 ## Pipeline 구성
-
-- 자세한 구성은 다음 [예제](https://github.com/toule/aws-cicd-sample)를 참조
 
 ![cicd-ecs-arch](../images/cicd-arch.png)
 
@@ -192,3 +191,8 @@
 ###### result
 
 ![build-env](../images/pipeline-7.png)
+
+## Test
+
+### 준비 상황
+

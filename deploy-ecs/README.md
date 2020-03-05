@@ -7,6 +7,10 @@
 - 루트 디렉토리에서 my-nginx와 my-tomcat을 **<u>현 디렉토리에 복사</u>**해야함
 - CI/CD 파이프라인 구성은 다음 [예제](https://github.com/toule/aws-cicd-sample)를 참조
 
+## 참고 사항
+
+- Microserivce Architecture상으로 각 서비스 별로 파이프라인을 구성하는 것이 올바르지만 현 예제는 테스트를 위해서 stage별로 parallel하게 구성하였음
+
 ## 수정 사항
 
 - 결과 확인을 위해 task의 수 조절

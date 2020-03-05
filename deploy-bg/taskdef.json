@@ -2,7 +2,7 @@
     "executionRoleiArn": "arn:aws:iam::264594923212:role/ecsTaskExecutionRole",
     "containerDefinitions": [
         {
-            "name": "nginx",
+            "name": "CONTAINER_NAME",
             "image": "<IMAGE1_NAME>",
 			"cpu": 0,
             "memoryReservation": 300,
@@ -11,7 +11,7 @@
                 {
                     "hostPort": 0,
                     "protocol": "tcp",
-                    "containerPort": 80
+                    "containerPort": CONTAINER_PORT
                 }
             ]
         }
@@ -20,5 +20,5 @@
         "EC2"
     ],
     "networkMode": "bridge",
-    "family": "webtask"
+    "family": "TASK_FAMILY"
 }

@@ -32,7 +32,7 @@
 
 ![nat-route](./images/nat-route.png)
 
-### IAM Role
+### IAM Role (ECS Service IAM)
 
 - name : ecsInstanceRole
 

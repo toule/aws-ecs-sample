@@ -4,7 +4,7 @@
 
 - 앞서 진행한 ECS 클러스터(Sample-cluster)를 기반으로 진행
 - 현 문서에서 role 혹은 설정이 없는 것은 이전 문서에 있는 값을 그대로 가져옴
-- 루트 디렉토리에서 my-nginx와 my-tomcat을 **<u>현 디렉토리에 복사</u>**해야함
+- 루트 디렉토리에서 my-nginx와 my-tomcat을 현 디렉토리에 복사 해야함
 - CI/CD 파이프라인 구성은 다음 [예제](https://github.com/toule/aws-cicd-sample)를 참조
 - 현 테스트는 이 [예제](https://github.com/toule/aws-ecs-sample/tree/master/deploy-ecs)를 기반으로 하며 추가적으로 CodeDeploy를 활용하여 Blue/Green Test를 구성함
 - ECS Cluster 및 Application Load Balancer는 미리 생성되어 있고 서비스만 삭제 필요
@@ -141,7 +141,23 @@
 
 ## Test
 
-- 현 디렉토리에 my-nginx와 my-tomcat을 붙여넣고 레포지토리에 commit 진행
+- 현 디렉토리에 my-nginx와 my-tomcat을 복사하고 레포지토리에 commit 진행
 
+### Result
 
+- start
+
+![bg-result-1](../images/bg-result-1.png)
+
+![bg-result-2](../images/bg-result-2.png)
+
+![bg-result-3](../images/bg-result-3.png)
+
+- finish
+
+![bg-result-4](../images/bg-result-4.png)
+
+![bg-result-5](../images/bg-result-5.png)
+
+![bg-result-6](../images/bg-result-6.png)
 

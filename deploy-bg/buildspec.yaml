@@ -26,8 +26,8 @@ phases:
 #      - IMAGE_URI=$REPOSITORY_URI@$DIGEST
       - sed -i "s/CONTAINER_NAME/$CONTAINER_NAME/" appspec.yaml
       - sed -i "s/CONTAINER_PORT/$CONTAINER_PORT/" appspec.yaml
-      - sed -i "s/CONTAINER_PORT/$CONTAINER_PORT/" taskdef.json
       - sed -i "s/CONTAINER_NAME/$CONTAINER_NAME/" taskdef.json
+      - sed -i "s/CONTAINER_PORT/$CONTAINER_PORT/" taskdef.json
       - sed -i "s/TASK_FAMILY/$TASK_FAMILY/" taskdef.json
       - echo Writing image definitions file...
       - printf '{\n"ImageURI":"%s"\n}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json

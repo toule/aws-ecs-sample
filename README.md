@@ -26,8 +26,11 @@
 ### NAT Gateway
 
 - ECS 인스턴스는 Private Subnet에 위치하기 때문에 ECS Agent와 ECS Management Engine과 통신하기 위해 NAT Gateway가 필요
+- Route Tables에 NAT에 대한 정보 기입 필요
 
 ![nat](./images/natgateway.png)
+
+![nat-route](./images/nat-route.png)
 
 ### IAM Role
 

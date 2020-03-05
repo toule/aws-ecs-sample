@@ -1,3 +1,7 @@
 arch.pptx
 tmp
 deploy-ecs/arch.pptx
+deploy-ecs/my-nginx
+deploy-ecs/my-tomcat
+deploy-bg/my-nginx
+deploy-bg/my-tomcat
